@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Arduino Uno R3 — Helicopter VDGS Breadboard Wiring</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-4 m-0">
+  <div class="max-w-5xl mx-auto space-y-4">
+    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--border)] pb-3">
+      <div>
+        <h1 class="text-lg font-semibold">Arduino Uno R3 — Breadboard Wiring Diagram</h1>
+        <p class="text-xs text-[var(--muted-foreground)]">Click any component below to highlight only its wires so you can wire step-by-step without mistakes.</p>
+      </div>
+      <div class="flex flex-wrap gap-1.5 text-xs" id="filters">
+        <button data-group="all" class="filter-btn px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--primary)] text-[var(--primary-foreground)] font-medium">All Wires</button>
+        <button data-group="power" class="filter-btn px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--card)]">1. Power</button>
+        <button data-group="sensor" class="filter-btn px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--card)]">2. HC-SR04</button>
+        <button data-group="leds" class="filter-btn px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--card)]">3. LEDs</button>
+        <button data-group="buzzer" class="filter-btn px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--card)]">4. Buzzer</button>
+        <button data-group="oled" class="filter-btn px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--card)]">5. OLED</button>
+        <button data-group="button" class="filter-btn px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--card)]">6. Button</button>
+      </div>
+    </div>
+
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-3 overflow-x-auto">
+      <svg id="diagram" viewBox="0 0 960 540" class="w-full h-auto min-w-[760px]" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect x="0" y="0" width="960" height="540" rx="10" fill="#181c24" />
+
+        <!-- ARDUINO UNO R3 -->
+        <g id="uno">
+          <rect x="30" y="55" width="230" height="430" rx="10" fill="#0d6e8a" stroke="#18a4c9" stroke-width="2" />
+          <rect x="100" y="38" width="60" height="28" rx="3" fill="#b8c0cc" />
+          <text x="130" y="56" text-anchor="middle" font-size="11" fill="#1f2937" font-weight="bold">USB</text>
+          <text x="145" y="255" text-anchor="middle" font-size="18" fill="#ffffff" font-weight="bold">ARDUINO</text>
+          <text x="145" y="278" text-anchor="middle" font-size="16" fill="#bfefff" font-weight="bold">UNO R3</text>
+
+          <!-- Left Header: Power + Analog -->
+          <g font-size="12" font-family="monospace" fill="#ffffff">
+            <rect x="38" y="130" width="64" height="22" rx="3" fill="#111827" /><text x="45" y="145">5V</text>
+            <circle cx="28" cy="141" r="5" fill="#ef4444" />
+
+            <rect x="38" y="162" width="64" height="22" rx="3" fill="#111827" /><text x="45" y="177">GND</text>
+            <circle cx="28" cy="173" r="5" fill="#111827" stroke="#9ca3af" stroke-width="1.5" />
+
+            <rect x="38" y="370" width="74" height="22" rx="3" fill="#111827" /><text x="45" y="385">A4 SDA</text>
+            <circle cx="28" cy="381" r="5" fill="#38bdf8" />
+
+            <rect x="38" y="402" width="74" height="22" rx="3" fill="#111827" /><text x="45" y="417">A5 SCL</text>
+            <circle cx="28" cy="413" r="5" fill="#a855f7" />
+          </g>
+
+          <!-- Right Header: Digital Pins -->
+          <g font-size="12" font-family="monospace" fill="#ffffff" text-anchor="end">
+            <rect x="188" y="100" width="64" height="22" rx="3" fill="#111827" /><text x="244" y="115">D10</text>
+            <circle cx="262" cy="111" r="5" fill="#f97316" />
+
+            <rect x="188" y="132" width="64" height="22" rx="3" fill="#111827" /><text x="244" y="147">D9</text>
+            <circle cx="262" cy="143" r="5" fill="#a855f7" />
+
+            <rect x="188" y="164" width="64" height="22" rx="3" fill="#111827" /><text x="244" y="179">D8</text>
+            <circle cx="262" cy="175" r="5" fill="#06b6d4" />
+
+            <rect x="188" y="210" width="64" height="22" rx="3" fill="#111827" /><text x="244" y="225">D7</text>
+            <circle cx="262" cy="221" r="5" fill="#ef4444" />
+
+            <rect x="188" y="242" width="64" height="22" rx="3" fill="#111827" /><text x="244" y="257">D6</text>
+            <circle cx="262" cy="253" r="5" fill="#eab308" />
+
+            <rect x="188" y="274" width="64" height="22" rx="3" fill="#111827" /><text x="244" y="289">D5</text>
+            <circle cx="262" cy="285" r="5" fill="#22c55e" />
+
+            <rect x="188" y="340" width="64" height="22" rx="3" fill="#111827" /><text x="244" y="355">D2</text>
+            <circle cx="262" cy="351" r="5" fill="#ec4899" />
+          </g>
+        </g>
+
+        <!-- BREADBOARD -->
+        <g id="breadboard">
+          <rect x="330" y="35" width="600" height="470" rx="10" fill="#f3f4f6" stroke="#cbd5e1" stroke-width="2" />
+          <!-- Top Power Rails (+ 5V, - GND) -->
+          <line x1="355" y1="58" x2="905" y2="58" stroke="#ef4444" stroke-width="3" />
+          <text x="342" y="62" font-size="13" fill="#dc2626" font-weight="bold">+</text>
+          <line x1="355" y1="80" x2="905" y2="80" stroke="#2563eb" stroke-width="3" />
+          <text x="343" y="84" font-size="15" fill="#2563eb" font-weight="bold">-</text>
+
+          <!-- Center Groove -->
+          <rect x="350" y="262" width="560" height="16" rx="3" fill="#cbd5e1" />
+          <text x="630" y="274" text-anchor="middle" font-size="10" fill="#475569" font-family="monospace">BREADBOARD CENTER GROOVE (Top a-e | Bottom f-j)</text>
+
+          <!-- Bottom Power Rails -->
+          <line x1="355" y1="462" x2="905" y2="462" stroke="#ef4444" stroke-width="3" />
+          <text x="342" y="466" font-size="13" fill="#dc2626" font-weight="bold">+</text>
+          <line x1="355" y1="484" x2="905" y2="484" stroke="#2563eb" stroke-width="3" />
+          <text x="343" y="488" font-size="15" fill="#2563eb" font-weight="bold">-</text>
+        </g>
+
+        <!-- COMPONENTS ON BREADBOARD -->
+        <!-- 1. HC-SR04 -->
+        <g id="comp-sensor">
+          <rect x="370" y="110" width="130" height="65" rx="6" fill="#1d4ed8" stroke="#1e3a8a" stroke-width="2" />
+          <circle cx="402" cy="142" r="18" fill="#e2e8f0" stroke="#64748b" stroke-width="3" />
+          <circle cx="468" cy="142" r="18" fill="#e2e8f0" stroke="#64748b" stroke-width="3" />
+          <text x="435" y="124" text-anchor="middle" font-size="10" fill="#ffffff" font-weight="bold">HC-SR04</text>
+          <g font-size="9" font-family="monospace" fill="#111827" text-anchor="middle">
+            <rect x="380" y="178" width="24" height="16" rx="2" fill="#e2e8f0" /><text x="392" y="189">VCC</text>
+            <rect x="408" y="178" width="26" height="16" rx="2" fill="#e2e8f0" /><text x="421" y="189">TRIG</text>
+            <rect x="438" y="178" width="26" height="16" rx="2" fill="#e2e8f0" /><text x="451" y="189">ECHO</text>
+            <rect x="468" y="178" width="24" height="16" rx="2" fill="#e2e8f0" /><text x="480" y="189">GND</text>
+          </g>
+        </g>
+
+        <!-- 2. 0.96" OLED -->
+        <g id="comp-oled">
+          <rect x="740" y="105" width="150" height="82" rx="6" fill="#0f172a" stroke="#334155" stroke-width="2" />
+          <rect x="752" y="118" width="126" height="46" rx="2" fill="#020617" stroke="#38bdf8" stroke-width="1" />
+          <text x="815" y="138" text-anchor="middle" font-size="11" fill="#38bdf8" font-family="monospace">Bell 407</text>
+          <text x="815" y="154" text-anchor="middle" font-size="10" fill="#ffffff" font-family="monospace">SAFE  120cm</text>
+          <g font-size="9" font-family="monospace" fill="#111827" text-anchor="middle">
+            <rect x="748" y="190" width="28" height="16" rx="2" fill="#e2e8f0" /><text x="762" y="201">GND</text>
+            <rect x="782" y="190" width="28" height="16" rx="2" fill="#e2e8f0" /><text x="796" y="201">VCC</text>
+            <rect x="816" y="190" width="28" height="16" rx="2" fill="#e2e8f0" /><text x="830" y="201">SCL</text>
+            <rect x="850" y="190" width="28" height="16" rx="2" fill="#e2e8f0" /><text x="864" y="201">SDA</text>
+          </g>
+        </g>
+
+        <!-- 3. Buzzer -->
+        <g id="comp-buzzer">
+          <circle cx="620" cy="155" r="26" fill="#111827" stroke="#475569" stroke-width="2" />
+          <circle cx="620" cy="155" r="6" fill="#334155" />
+          <text x="620" y="139" text-anchor="middle" font-size="9" fill="#ffffff" font-weight="bold">BUZZER</text>
+          <text x="602" y="192" text-anchor="middle" font-size="10" fill="#111827" font-weight="bold">+</text>
+          <text x="638" y="192" text-anchor="middle" font-size="10" fill="#111827" font-weight="bold">-</text>
+        </g>
+
+        <!-- 4. 3 LEDs + 330 ohm Resistors across center groove -->
+        <g id="comp-leds">
+          <!-- Green LED (D5) -->
+          <rect x="394" y="255" width="12" height="30" rx="3" fill="#d97706" />
+          <text x="400" y="248" text-anchor="middle" font-size="9" fill="#111827">330Ω</text>
+          <circle cx="400" cy="318" r="13" fill="#22c55e" stroke="#15803d" stroke-width="2" />
+          <text x="400" y="346" text-anchor="middle" font-size="10" fill="#111827" font-weight="bold">GREEN (D5)</text>
+
+          <!-- Yellow LED (D6) -->
+          <rect x="494" y="255" width="12" height="30" rx="3" fill="#d97706" />
+          <text x="500" y="248" text-anchor="middle" font-size="9" fill="#111827">330Ω</text>
+          <circle cx="500" cy="318" r="13" fill="#eab308" stroke="#a16207" stroke-width="2" />
+          <text x="500" y="346" text-anchor="middle" font-size="10" fill="#111827" font-weight="bold">YELLOW (D6)</text>
+
+          <!-- Red LED (D7) -->
+          <rect x="594" y="255" width="12" height="30" rx="3" fill="#d97706" />
+          <text x="600" y="248" text-anchor="middle" font-size="9" fill="#111827">330Ω</text>
+          <circle cx="600" cy="318" r="13" fill="#ef4444" stroke="#b91c1c" stroke-width="2" />
+          <text x="600" y="346" text-anchor="middle" font-size="10" fill="#111827" font-weight="bold">RED (D7)</text>
+        </g>
+
+        <!-- 5. Push Button (D2) -->
+        <g id="comp-button">
+          <rect x="750" y="305" width="44" height="44" rx="5" fill="#334155" stroke="#0f172a" stroke-width="2" />
+          <circle cx="772" cy="327" r="11" fill="#94a3b8" />
+          <text x="772" y="366" text-anchor="middle" font-size="10" fill="#111827" font-weight="bold">BTN (D2)</text>
+        </g>
+
+        <!-- WIRES (grouped by data-group) -->
+        <g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Power -->
+          <path class="wire" data-group="power" d="M 28 141 L 12 141 L 12 18 L 365 18 L 365 58" stroke="#ef4444" />
+          <path class="wire" data-group="power" d="M 28 173 L 4 173 L 4 522 L 365 522 L 365 484" stroke="#3b82f6" />
+          <path class="wire" data-group="power" d="M 355 58 L 355 462" stroke="#ef4444" stroke-dasharray="5,4" />
+          <path class="wire" data-group="power" d="M 348 80 L 348 484" stroke="#3b82f6" stroke-dasharray="5,4" />
+
+          <!-- HC-SR04 -->
+          <path class="wire" data-group="sensor" d="M 392 178 L 392 58" stroke="#ef4444" />
+          <path class="wire" data-group="sensor" d="M 480 178 L 480 80" stroke="#3b82f6" />
+          <path class="wire" data-group="sensor" d="M 262 143 L 305 143 L 305 215 L 421 215 L 421 194" stroke="#a855f7" />
+          <path class="wire" data-group="sensor" d="M 262 111 L 295 111 L 295 225 L 451 225 L 451 194" stroke="#f97316" />
+
+          <!-- LEDs -->
+          <path class="wire" data-group="leds" d="M 262 285 L 315 285 L 315 245 L 400 245 L 400 255" stroke="#22c55e" />
+          <path class="wire" data-group="leds" d="M 262 253 L 308 253 L 308 238 L 500 238 L 500 255" stroke="#eab308" />
+          <path class="wire" data-group="leds" d="M 262 221 L 300 221 L 300 230 L 600 230 L 600 255" stroke="#ef4444" />
+          <path class="wire" data-group="leds" d="M 400 331 L 400 484" stroke="#3b82f6" />
+          <path class="wire" data-group="leds" d="M 500 331 L 500 484" stroke="#3b82f6" />
+          <path class="wire" data-group="leds" d="M 600 331 L 600 484" stroke="#3b82f6" />
+
+          <!-- Buzzer -->
+          <path class="wire" data-group="buzzer" d="M 262 175 L 285 175 L 285 205 L 602 205 L 602 182" stroke="#06b6d4" />
+          <path class="wire" data-group="buzzer" d="M 638 182 L 638 80" stroke="#3b82f6" />
+
+          <!-- OLED -->
+          <path class="wire" data-group="oled" d="M 762 190 L 762 80" stroke="#3b82f6" />
+          <path class="wire" data-group="oled" d="M 796 190 L 796 58" stroke="#ef4444" />
+          <path class="wire" data-group="oled" d="M 28 381 L 16 381 L 16 512 L 864 512 L 864 206" stroke="#38bdf8" />
+          <path class="wire" data-group="oled" d="M 28 413 L 22 413 L 22 504 L 830 504 L 830 206" stroke="#a855f7" />
+
+          <!-- Button -->
+          <path class="wire" data-group="button" d="M 262 351 L 320 351 L 320 385 L 758 385 L 758 349" stroke="#ec4899" />
+          <path class="wire" data-group="button" d="M 786 349 L 786 484" stroke="#3b82f6" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Pin Table -->
+    <div id="legend" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 text-xs">
+      <div class="card-item p-2.5 rounded border border-[var(--border)] bg-[var(--card)]" data-group="power">
+        <div class="font-semibold mb-1">1. Power Rails</div>
+        <div>Arduino <code>5V</code> → Breadboard <code>+</code> rail</div>
+        <div>Arduino <code>GND</code> → Breadboard <code>-</code> rail</div>
+      </div>
+      <div class="card-item p-2.5 rounded border border-[var(--border)] bg-[var(--card)]" data-group="sensor">
+        <div class="font-semibold mb-1">2. HC-SR04 Ultrasonic</div>
+        <div><code>VCC</code> → <code>5V</code> | <code>GND</code> → <code>GND</code></div>
+        <div><code>TRIG</code> → <code>D9</code> | <code>ECHO</code> → <code>D10</code></div>
+      </div>
+      <div class="card-item p-2.5 rounded border border-[var(--border)] bg-[var(--card)]" data-group="leds">
+        <div class="font-semibold mb-1">3. Three LEDs (330 Ω each)</div>
+        <div>Green: <code>D5</code> → <code>330Ω</code> → <code>+</code> | <code>-</code> → <code>GND</code></div>
+        <div>Yellow: <code>D6</code> → <code>330Ω</code> → <code>+</code> | Red: <code>D7</code> → <code>330Ω</code> → <code>+</code></div>
+      </div>
+      <div class="card-item p-2.5 rounded border border-[var(--border)] bg-[var(--card)]" data-group="buzzer">
+        <div class="font-semibold mb-1">4. Active Buzzer</div>
+        <div><code>+</code> (long leg) → <code>D8</code> | <code>-</code> → <code>GND</code></div>
+      </div>
+      <div class="card-item p-2.5 rounded border border-[var(--border)] bg-[var(--card)]" data-group="oled">
+        <div class="font-semibold mb-1">5. 0.96" I2C OLED</div>
+        <div><code>VCC</code> → <code>5V</code> | <code>GND</code> → <code>GND</code></div>
+        <div><code>SDA</code> → <code>A4</code> | <code>SCL</code> → <code>A5</code></div>
+      </div>
+      <div class="card-item p-2.5 rounded border border-[var(--border)] bg-[var(--card)]" data-group="button">
+        <div class="font-semibold mb-1">6. Push Button (Optional)</div>
+        <div>Leg 1 → <code>D2</code> | Leg 2 → <code>GND</code></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.filter-btn');
+    const wires = document.querySelectorAll('.wire');
+    const cards = document.querySelectorAll('.card-item');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const group = btn.dataset.group;
+        buttons.forEach(b => {
+          b.classList.remove('bg-[var(--primary)]', 'text-[var(--primary-foreground)]');
+          b.classList.add('bg-[var(--card)]');
+        });
+        btn.classList.remove('bg-[var(--card)]');
+        btn.classList.add('bg-[var(--primary)]', 'text-[var(--primary-foreground)]');
+
+        wires.forEach(w => {
+          const match = group === 'all' || w.dataset.group === group;
+          w.style.opacity = match ? '1' : '0.1';
+          w.style.strokeWidth = (match && group !== 'all') ? '4.5' : '3';
+        });
+        cards.forEach(c => {
+          const match = group === 'all' || c.dataset.group === group;
+          c.style.opacity = match ? '1' : '0.35';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
